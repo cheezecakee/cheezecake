@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/cheezecake/static/css/main.6784581e.css",
-    "main.js": "/cheezecake/static/js/main.137e9c7f.js",
+    "main.css": "/cheezecake/static/css/main.b4319d4a.css",
+    "main.js": "/cheezecake/static/js/main.82bdfe69.js",
     "index.html": "/cheezecake/index.html",
-    "main.6784581e.css.map": "/cheezecake/static/css/main.6784581e.css.map",
-    "main.137e9c7f.js.map": "/cheezecake/static/js/main.137e9c7f.js.map"
+    "main.b4319d4a.css.map": "/cheezecake/static/css/main.b4319d4a.css.map",
+    "main.82bdfe69.js.map": "/cheezecake/static/js/main.82bdfe69.js.map"
   },
   "entrypoints": [
-    "static/css/main.6784581e.css",
-    "static/js/main.137e9c7f.js"
+    "static/css/main.b4319d4a.css",
+    "static/js/main.82bdfe69.js"
   ]
 }

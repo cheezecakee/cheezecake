@@ -11,7 +11,7 @@ const CursorSelection = ({ onCursorSelect }) => {
   return (
     <div className="cursor-selection">
       <h2>Select a Cursor</h2>
-      <div>
+      <div className="cursor-options-container">
         {cursors.map((cursor, index) => (
           <div
             key={index}
