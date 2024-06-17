@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/cheezecakee/static/css/main.6784581e.css",
+    "main.js": "/cheezecakee/static/js/main.137e9c7f.js",
+    "index.html": "/cheezecakee/index.html",
+    "main.6784581e.css.map": "/cheezecakee/static/css/main.6784581e.css.map",
+    "main.137e9c7f.js.map": "/cheezecakee/static/js/main.137e9c7f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6784581e.css",
+    "static/js/main.137e9c7f.js"
+  ]
+}
