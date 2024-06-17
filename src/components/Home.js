@@ -1,11 +1,13 @@
 import React from 'react';
 
-const Home = ({ onStart }) => (
-  <div className="home">
-    <h1>Welcome to My Portfolio</h1>
-    <button onClick={onStart}>Press to Start</button>
-  </div>
-);
+const Home = () => {
+  return (
+    <div className="home">
+      <h1>Welcome to My Portfolio</h1>
+      {/* Add other sections like About, Projects, Contact here */}
+    </div>
+  );
+};
 
 export default Home;
 
