@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'KodeMono';
+  src: url('./fonts/KodeMono-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   --light-bg-color: white;
   --light-text-color: black;
@@ -8,12 +15,13 @@
 body, html, #root {
   margin: 0;
   padding: 0;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex: 1;
   align-items: center;
   justify-content: center;
+  font-family: 'KodeMono', sans-serif;
 }
 
 .app {
@@ -26,8 +34,8 @@ body, html, #root {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding-bottom: 60px; /* Add padding to avoid content getting hidden behind the nav bar */
-
+  overflow-y: auto; /* Ensure the main content is scrollable */
+  padding-bottom: 60px; /* Add padding to avoid content getting hidden behind the nav bar */ 
 }
 
 .app.light {
@@ -54,12 +62,6 @@ body, html, #root {
   flex-direction: column;
 }
 
-/* Ensure all child elements inherit the theme colors */
-/* .app, .app * { */
-/*   background-color: var(--bg-color) !important; */
-/*   color: var(--text-color) !important; */
-/* } */
-
 button {
   border: solid 1px var(--text-color);
   padding: 10px 20px;
@@ -81,6 +83,8 @@ button {
   justify-content: center;
   height: 100%;
   width: 100%;
+  overflow-y: auto; /* Ensure the main content is scrollable */
+  padding-bottom: 60px; /* Add padding to avoid content getting hidden behind the nav bar */ 
 }
 
 .theme-selection .buttons-container, .cursor-selection .cursor-options-container {
@@ -88,6 +92,26 @@ button {
   flex-direction: row;
   justify-content: center;
   gap: 10px; /* Add spacing between cursor options */
+  overflow-y: auto; /* Enable vertical scrolling if needed */
+}
+
+.introduction  {
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10%;
+  margin-top: 25%;
+}
+
+
+
+.introduction .intro-text {
+  display: flex;
+  width: 79%;
+  text-align: start;
+  justify-content: start;
 }
 
 .cursor-option {
@@ -100,4 +124,60 @@ button {
   height: auto; /* Maintain aspect ratio */
 }
 
+h1 {
+  font-size: 3.5em;
+  margin-bottom: 5%;
+}
 
+.skills {
+  width: 40%;
+  color: var(--text-color);
+  text-align: left;
+}
+
+.tree,
+.tree ul {
+  list-style: none;
+  padding-left: 3%;
+  position: relative;
+}
+
+.tree ul {
+  margin-left: 1%; /* Adjust indentation as needed */
+}
+
+.tree:before,
+.tree ul:before {
+  content: '-';
+  display: block;
+  width: 1px;
+  background: var(--text-color);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1%; /* Adjust positioning as needed */
+}
+
+.tree li {
+  position: relative;
+  line-height: 20px;
+  color: var(--text-color);
+}
+
+.tree li:before {
+  content: '-';
+  display: block;
+  position: absolute;
+  left: -12px; /* Adjust to position the symbol correctly */
+}
+
+.tree ul li:before {
+  content: '-';
+  display: block;
+  position: absolute;
+  left: -12px; /* Adjust to position the symbol correctly */
+}
+
+.tree li:last-child:before {
+  content: '_';
+}
