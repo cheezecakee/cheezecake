@@ -1,3 +1,10 @@
+:root {
+  --light-bg-color: white;
+  --light-text-color: black;
+  --dark-bg-color: black;
+  --dark-text-color: white;
+}
+
 body, html, #root {
   margin: 0;
   padding: 0;
@@ -9,7 +16,9 @@ body, html, #root {
   justify-content: center;
 }
 
-.App {
+.app {
+  background-color: var(--bg-color);
+  color: var(--text-color);
   height: 100%;
   width: 100%;
   display: flex;
@@ -17,11 +26,13 @@ body, html, #root {
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding-bottom: 60px; /* Add padding to avoid content getting hidden behind the nav bar */
+
 }
 
 .app.light {
-  background-color: white;
-  color: black;
+  --bg-color: var(--light-bg-color);
+  --text-color: var(--light-text-color);
   height: 100%;
   width: 100%;
   align-items: center;
@@ -32,8 +43,8 @@ body, html, #root {
 }
 
 .app.dark {
-  background-color: black;
-  color: white;
+  --bg-color: var(--dark-bg-color);
+  --text-color: var(--dark-text-color);
   height: 100%;
   width: 100%;
   align-items: center;
@@ -43,7 +54,14 @@ body, html, #root {
   flex-direction: column;
 }
 
+/* Ensure all child elements inherit the theme colors */
+/* .app, .app * { */
+/*   background-color: var(--bg-color) !important; */
+/*   color: var(--text-color) !important; */
+/* } */
+
 button {
+  border: solid 1px var(--text-color);
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
@@ -81,4 +99,5 @@ button {
   width: 50px; /* Adjust as needed */
   height: auto; /* Maintain aspect ratio */
 }
+
 
