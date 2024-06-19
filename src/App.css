@@ -71,6 +71,11 @@ button {
   padding: 0.625em 1.25em;
   font-size: 1em;
   font-family: 'KodeMono', sans-serif;
+  transition: background-color 0.3s, box-shadow 0.3s; 
+}
+
+button:hover {
+  box-shadow: 0 0 0 0.125em var(--text-color); 
 }
 
 /* CSS Reset */
@@ -106,7 +111,6 @@ button {
   display: flex;
   flex-direction: column;
   margin-bottom: 10%;
-  margin-top: 40%;
 }
 
 .introduction .intro-text {
@@ -128,7 +132,8 @@ button {
 
 h1 {
   font-size: 3.5em;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
+  margin-top: 15%;
 }
 
 /* Skills container */
@@ -137,6 +142,7 @@ h1 {
   color: var(--text-color);
   text-align: left;
   padding: 1.25em;
+  margin-bottom: 2%;
 }
 
 .skills-grid {
@@ -168,7 +174,7 @@ h1 {
 .resume-button {
   padding: 0.625em 1.25em;
   font-size: 1em;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
   color: var(--text-color);
   background-color: var(--bg-color);
   border: 0.0625em solid var(--text-color);
