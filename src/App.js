@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState } from 'react';
 import './App.css';
 import Home from './components/Home.js';
@@ -46,7 +45,7 @@ const App = () => {
   };
 
   return (
-    <div className={`app ${theme}`} style={{ cursor: cursor ? `url(${cursor}), auto` : 'auto' }}>
+    <div className={`app ${theme}`} style={{ cursor: cursor ? `url(${cursor}), auto` : 'inherit' }}>
       {page === 'start' && <button onClick={() => setPage('theme')}>Press to Start</button>}
       {page === 'theme' && <ThemeSelection onThemeSelect={handleThemeSelect} />}
       {page === 'cursor' && <CursorSelection onCursorSelect={handleCursorSelect} />}

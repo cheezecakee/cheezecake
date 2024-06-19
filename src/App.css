@@ -16,12 +16,16 @@ body, html, #root {
   margin: 0;
   padding: 0;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex: 1;
   align-items: center;
   justify-content: center;
   font-family: 'KodeMono', sans-serif;
+}
+ 
+.app * {
+  cursor: inherit;
 }
 
 .app {
@@ -34,8 +38,8 @@ body, html, #root {
   align-items: center;
   justify-content: center;
   text-align: center;
-  overflow-y: auto; /* Ensure the main content is scrollable */
-  padding-bottom: 60px; /* Add padding to avoid content getting hidden behind the nav bar */ 
+  overflow-y: auto; 
+  padding-bottom: 3.75em; 
 }
 
 .app.light {
@@ -63,10 +67,9 @@ body, html, #root {
 }
 
 button {
-  border: solid 1px var(--text-color);
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
+  border: solid 0.0625em var(--text-color);
+  padding: 0.625em 1.25em;
+  font-size: 1em;
   font-family: 'KodeMono', sans-serif;
 }
 
@@ -84,16 +87,16 @@ button {
   justify-content: center;
   height: 100%;
   width: 100%;
-  overflow-y: auto; /* Ensure the main content is scrollable */
-  padding-bottom: 60px; /* Add padding to avoid content getting hidden behind the nav bar */ 
+  overflow-y: auto; 
+  padding-bottom: 3.75em; 
 }
 
 .theme-selection .buttons-container, .cursor-selection .cursor-options-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 10px; /* Add spacing between cursor options */
-  overflow-y: auto; /* Enable vertical scrolling if needed */
+  gap: 0.625em; 
+  overflow-y: auto; 
 }
 
 .introduction  {
@@ -114,18 +117,13 @@ button {
 }
 
 .cursor-option {
-  margin-top: 20px;
+  margin-top: 1.25em;
   cursor: pointer;
 }
 
 .cursor-option img {
-  width: 50px; /* Adjust as needed */
-  height: auto; /* Maintain aspect ratio */
-}
-
-/* Ensure cursor styles apply to the entire app */
-.app * {
-  cursor: inherit; /* Ensure the custom cursor is applied */
+  width: 3.125em; 
+  height: auto; 
 }
 
 h1 {
@@ -133,57 +131,53 @@ h1 {
   margin-bottom: 5%;
 }
 
-.resume-button { 
-  margin-bottom: 5%;
-}
 /* Skills container */
 .skills {
-  width: 100%; /* Ensure the container takes full width */
+  width: 100%; 
   color: var(--text-color);
   text-align: left;
-  padding: 20px;
+  padding: 1.25em;
 }
 
-/* Skills grid */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns */
-  grid-template-rows: repeat(2, auto); /* 2 rows */
-  gap: 10px; /* Adjust spacing between items as needed */
-  list-style: none; /* Remove default list styling */
-  padding: 0; /* Remove default padding */
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 0.625em;
+  list-style: none;
+  padding: 0;
 }
 
 .skills-grid li {
-  background-color: var(--bg-color); /* Optional: Add background color for contrast */
-  padding: 10px; /* Adjust padding as needed */
-  border: 1px solid var(--text-color); /* Optional: Add border for styling */
-  text-align: center; /* Center-align text inside each grid item */
+  background-color: var(--bg-color);
+  padding: 0.625em;
+  border: 0.0625em solid var(--text-color);
+  text-align: center;
 }
 
 .introduction {
   width: 80%;
-  margin: 20px auto;
+  margin: 1.25em auto;
   text-align: center;
 }
 
 .introduction .intro-text {
-  margin-bottom: 20px;
+  margin-bottom: 1.25em;
 }
 
 .resume-button {
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 0.625em 1.25em;
+  font-size: 1em;
+  margin-bottom: 5%;
   color: var(--text-color);
   background-color: var(--bg-color);
-  border: 1px solid var(--text-color);
-  cursor: pointer;
+  border: 0.0625em solid var(--text-color);
   text-decoration: none;
+  transition: background-color 0.3s, box-shadow 0.3s; 
 }
 
 .resume-button:hover {
-  background-color: var(--text-color);
-  color: var(--bg-color);
+  box-shadow: 0 0 0 0.125em var(--text-color); 
 }
 
 /* Theme specific styles */
@@ -203,7 +197,7 @@ h1 {
   overflow: hidden;
   border-right: 0.15em solid var(--text-color);
   animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
-  max-width: fit-content; /* Ensure the width fits the content */
+  max-width: fit-content;
 }
 
 /* Typing effect */

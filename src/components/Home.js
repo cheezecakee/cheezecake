@@ -9,7 +9,6 @@ const Home = () => {
         <p className="intro-text"> Backend Developer. </p>
         <p className="intro-text"> If you would like to know more about me feel free to browse!</p>
         <a href={resumePDF} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</a>
-    {/* Add other sections like About, Projects, Contact here */}
       </div>
       <div className="Skills">
         <h2>Skills</h2>
