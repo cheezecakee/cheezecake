@@ -8,6 +8,8 @@
   justify-content: center;
   background-color: var(--bg-color);
   padding: 10px 0;
+  z-index: 1000; /* Ensure the navbar is on top of other elements */
+  cursor: inherit; /* Ensure the custom cursor is applied */
 }
 
 .nav-bar button {
@@ -67,4 +69,9 @@
 
 .app.dark .nav-bar button:hover {
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Ensure cursor styles apply to the navbar */
+.nav-bar, .nav-bar * {
+  cursor: pointer;
 }

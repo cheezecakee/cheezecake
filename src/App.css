@@ -102,14 +102,12 @@ button {
   display: flex;
   flex-direction: column;
   margin-bottom: 10%;
-  margin-top: 25%;
+  margin-top: 40%;
 }
-
-
 
 .introduction .intro-text {
   display: flex;
-  width: 79%;
+  width: 50%;
   text-align: start;
   justify-content: start;
 }
@@ -124,60 +122,97 @@ button {
   height: auto; /* Maintain aspect ratio */
 }
 
+/* Ensure cursor styles apply to the entire app */
+.app * {
+  cursor: inherit; /* Ensure the custom cursor is applied */
+}
+
 h1 {
   font-size: 3.5em;
   margin-bottom: 5%;
 }
 
+.resume-button { 
+  margin-bottom: 5%;
+}
+/* Skills container */
 .skills {
-  width: 40%;
+  width: 100%; /* Ensure the container takes full width */
   color: var(--text-color);
   text-align: left;
+  padding: 20px;
 }
 
-.tree,
-.tree ul {
-  list-style: none;
-  padding-left: 3%;
-  position: relative;
+/* Skills grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  grid-template-rows: repeat(2, auto); /* 2 rows */
+  gap: 10px; /* Adjust spacing between items as needed */
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
 }
 
-.tree ul {
-  margin-left: 1%; /* Adjust indentation as needed */
+.skills-grid li {
+  background-color: var(--bg-color); /* Optional: Add background color for contrast */
+  padding: 10px; /* Adjust padding as needed */
+  border: 1px solid var(--text-color); /* Optional: Add border for styling */
+  text-align: center; /* Center-align text inside each grid item */
 }
 
-.tree:before,
-.tree ul:before {
-  content: '-';
-  display: block;
-  width: 1px;
-  background: var(--text-color);
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 1%; /* Adjust positioning as needed */
+.introduction {
+  width: 80%;
+  margin: 20px auto;
+  text-align: center;
 }
 
-.tree li {
-  position: relative;
-  line-height: 20px;
+.introduction .intro-text {
+  margin-bottom: 20px;
+}
+
+.resume-button {
+  padding: 10px 20px;
+  font-size: 16px;
   color: var(--text-color);
+  background-color: var(--bg-color);
+  border: 1px solid var(--text-color);
+  cursor: pointer;
+  text-decoration: none;
 }
 
-.tree li:before {
-  content: '-';
-  display: block;
-  position: absolute;
-  left: -12px; /* Adjust to position the symbol correctly */
+.resume-button:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
 }
 
-.tree ul li:before {
-  content: '-';
-  display: block;
-  position: absolute;
-  left: -12px; /* Adjust to position the symbol correctly */
+/* Theme specific styles */
+.app.light .skill-item, .app.light .resume-button {
+  background-color: var(--light-bg-color);
+  color: var(--light-text-color);
 }
 
-.tree li:last-child:before {
-  content: '_';
+.app.dark .skill-item, .app.dark .resume-button {
+  background-color: var(--dark-bg-color);
+  color: var(--dark-text-color);
+}
+
+/* Typing animation styles */
+.typing-animation {
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid var(--text-color);
+  animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
+  max-width: fit-content; /* Ensure the width fits the content */
+}
+
+/* Typing effect */
+@keyframes typing {
+  from { max-width: 0 }
+  to { max-width: 100% }
+}
+
+/* Blinking cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--text-color) }
 }
