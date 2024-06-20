@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/cheezecake/static/css/main.e0adc913.css",
+    "main.css": "/cheezecake/static/css/main.3a4af775.css",
     "main.js": "/cheezecake/static/js/main.419412c1.js",
     "static/media/resume.pdf": "/cheezecake/static/media/resume.b1e72ac8773b3bdfc37d.pdf",
     "static/media/KodeMono-VariableFont_wght.ttf": "/cheezecake/static/media/KodeMono-VariableFont_wght.9ae07349897c5fb8e035.ttf",
@@ -10,11 +10,11 @@
     "static/media/contact.svg": "/cheezecake/static/media/contact.cf2475ede0a132ffbc1b27271b5b12b6.svg",
     "static/media/home.svg": "/cheezecake/static/media/home.9f30cd4b21a37942900e5f66eeb32daf.svg",
     "static/media/projects.svg": "/cheezecake/static/media/projects.bde2be0bba3021e0f08172bd3d2034f0.svg",
-    "main.e0adc913.css.map": "/cheezecake/static/css/main.e0adc913.css.map",
+    "main.3a4af775.css.map": "/cheezecake/static/css/main.3a4af775.css.map",
     "main.419412c1.js.map": "/cheezecake/static/js/main.419412c1.js.map"
   },
   "entrypoints": [
-    "static/css/main.e0adc913.css",
+    "static/css/main.3a4af775.css",
     "static/js/main.419412c1.js"
   ]
 }
