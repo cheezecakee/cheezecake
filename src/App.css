@@ -12,6 +12,33 @@
   --dark-text-color: white;
 }
 
+h1 {
+  font-size: 3em;
+  margin-bottom: 5%;
+  margin-top: 15%;
+}
+
+h2 {
+  margin-bottom: 5%;
+}
+
+section {
+  width: 40%;
+  height: 80%;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  text-align: start;
+}
+
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body, html, #root {
   margin: 0;
   padding: 0;
@@ -25,7 +52,7 @@ body, html, #root {
 }
  
 .app * {
-  cursor: inherit;
+  cursor: inherit; /** Sets custom cursor to all pages **/
 }
 
 .app {
@@ -42,6 +69,7 @@ body, html, #root {
   padding-bottom: 3.75em; 
 }
 
+/** Light mode **/
 .app.light {
   --bg-color: var(--light-bg-color);
   --text-color: var(--light-text-color);
@@ -54,6 +82,7 @@ body, html, #root {
   flex-direction: column;
 }
 
+/** Dark mode **/
 .app.dark {
   --bg-color: var(--dark-bg-color);
   --text-color: var(--dark-text-color);
@@ -66,6 +95,7 @@ body, html, #root {
   flex-direction: column;
 }
 
+/** Default Buttons **/
 button {
   border: solid 0.0625em var(--text-color);
   padding: 0.625em 1.25em;
@@ -78,14 +108,8 @@ button:hover {
   box-shadow: 0 0 0 0.125em var(--text-color); 
 }
 
-/* CSS Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.cursor-selection, .theme-selection, .home {
+/** Theme and cursor selectio **/
+.cursor-selection, .theme-selection{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,43 +128,58 @@ button:hover {
   overflow-y: auto; 
 }
 
-.introduction  {
-  width: 50%;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10%;
-}
-
-.introduction .intro-text {
-  display: flex;
-  width: 50%;
-  text-align: start;
-  justify-content: start;
-}
-
-.cursor-option {
+.cursor-option img {
+  width: 3.125em; 
+  height: auto; 
   margin-top: 1.25em;
   cursor: pointer;
 }
 
-.cursor-option img {
-  width: 3.125em; 
-  height: auto; 
+/** Home Page **/
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto; 
+  padding-bottom: 3.75em;
 }
 
-h1 {
-  font-size: 3.5em;
-  margin-bottom: 2%;
-  margin-top: 15%;
+.introduction  {
+  width: 40%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
-h2 {
+.introduction .intro-text {
+  display: flex;
+  width: 85%;
+  text-align: start;
+  justify-content: start;
+  margin-bottom: 1.25em;
+}
+
+.resume-button {
+  padding: 0.625em 1.25em;
+  font-size: 1em;
   margin-bottom: 5%;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  border: 0.0625em solid var(--text-color);
+  text-decoration: none;
+  transition: background-color 0.3s, box-shadow 0.3s; 
 }
 
-/* Skills container */
+.resume-button:hover {
+  box-shadow: 0 0 0 0.125em var(--text-color); 
+}
+
+/* Skills */
 .skills {
   width: 100%; 
   color: var(--text-color);
@@ -165,71 +204,11 @@ h2 {
   text-align: center;
 }
 
-.introduction {
-  width: 80%;
-  margin: 1.25em auto;
-  text-align: center;
-}
-
-.introduction .intro-text {
-  margin-bottom: 1.25em;
-}
-
-.resume-button {
-  padding: 0.625em 1.25em;
-  font-size: 1em;
-  margin-bottom: 2%;
-  color: var(--text-color);
-  background-color: var(--bg-color);
-  border: 0.0625em solid var(--text-color);
-  text-decoration: none;
-  transition: background-color 0.3s, box-shadow 0.3s; 
-}
-
-.resume-button:hover {
-  box-shadow: 0 0 0 0.125em var(--text-color); 
-}
-
-/* Theme specific styles */
-.app.light .skill-item, .app.light .resume-button {
-  background-color: var(--light-bg-color);
-  color: var(--light-text-color);
-}
-
-.app.dark .skill-item, .app.dark .resume-button {
-  background-color: var(--dark-bg-color);
-  color: var(--dark-text-color);
-}
-
-/* Typing animation styles */
-.typing-animation {
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 0.15em solid var(--text-color);
-  animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
-  max-width: fit-content;
-}
-
-/* Typing effect */
-@keyframes typing {
-  from { max-width: 0 }
-  to { max-width: 100% }
-}
-
-/* Blinking cursor effect */
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: var(--text-color) }
-}
-
-section {
-  width: 40%;
-  height: 80%;
-  display: flex;
-  justify-content: start;
-  align-items: start;
-  flex-direction: column;
-  text-align: start;
+/** About **/
+.about {
+  overflow-y: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .about-me {
@@ -237,41 +216,37 @@ section {
   margin-bottom: 5%;
 }
 
-.about {
-  overflow-y: auto;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
 .about::-webkit-scrollbar {
   display: none; /* Hide scrollbar */
 }
 
-
+/** Projects **/
 .projects {
   width: 40%;
   height: 60%;
-  padding: 20px;
+  padding: 1.25em;
   color: var(--text-color);
   justify-content: start;
   align-items: start;
   text-align: start;
+
 }
 
 .repo-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 1.25em;
+  margin-bottom: 20%;
 }
 
 .repo-box {
   color: var(--bg-color);
   background-color: var(--text-color);
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
+  border: 0.0625em solid var(--text-color);
+  border-radius: 0.5em;
+  padding: 0.9375em;
   width: 100%; /* Adjust to fit 3 boxes per row */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
 }
@@ -294,16 +269,16 @@ section {
 .languages {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 0.3125em;
 }
 
 .languages span {
   color: var(--text-color);
   background-color: var(--bg-color);
-  border-radius: 4px;
-  padding: 3px 6px;
+  border-radius: 0.25em;
+  padding: 0.1875em 0.375em;
   font-size: 0.9em;
-  margin-top: 10px;
+  margin-top: 0.625em;
 }
 
 .repo-link {
@@ -311,5 +286,29 @@ section {
   color: var(--text-color);
   background-color: var(--bg-color);
   font-size: 0.9em;
-  margin-top: 10px;
+  margin-top: 0.625em;
 }
+
+/** Typing Animation **/
+/* Typing animation styles */
+.typing-animation {
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid var(--text-color);
+  animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
+  max-width: fit-content;
+}
+
+/* Typing effect */
+@keyframes typing {
+  from { max-width: 0 }
+  to { max-width: 100% }
+}
+
+/* Blinking cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--text-color) }
+}
+
+
