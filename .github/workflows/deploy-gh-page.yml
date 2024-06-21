@@ -6,11 +6,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
       - name: Cache modules
         id: cache-npm
         uses: actions/cache@v3
@@ -21,24 +19,21 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+        name: List the state of node modules
         name: Install bun
         run: npm install -g bun
 
       - name: List the state of node modules
         continue-on-error: true
-        run: bun run list
+        run: bun list
 
       - name: Install dependencies with bun
         run: bun install
-
       - name: Build website with bun
         run: bun run build
-
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           GITHUB_TOKEN: ${{ secrets.CD_GITHUB_TOKEN }}
           publish_dir: ./build
-
