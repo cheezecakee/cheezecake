@@ -136,6 +136,10 @@ h1 {
   margin-top: 15%;
 }
 
+h2 {
+  margin-bottom: 5%;
+}
+
 /* Skills container */
 .skills {
   width: 100%; 
@@ -216,4 +220,29 @@ h1 {
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: var(--text-color) }
+}
+
+section {
+  width: 40%;
+  height: 80%;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  text-align: start;
+}
+
+.about-me {
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+.about {
+  overflow-y: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.about::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
 }
