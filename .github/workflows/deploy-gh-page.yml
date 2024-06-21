@@ -1,8 +1,9 @@
+
 name: CD
 on:
   push:
     branches:
-      - "main"
+      - main
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -28,13 +29,13 @@ jobs:
 
       - name: List the state of node modules
         continue-on-error: true
-        run: bun run list
+        run: $(npm bin -g)/bun list  # Adjusted to use npm bin -g to find the bun executable
 
       - name: Install dependencies with bun
-        run: bun install
+        run: $(npm bin -g)/bun install
 
       - name: Build website with bun
-        run: bun run build
+        run: $(npm bin -g)/bun run build
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
