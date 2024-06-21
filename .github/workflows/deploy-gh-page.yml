@@ -25,16 +25,17 @@ jobs:
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
         name: List the state of node modules
         continue-on-error: true
-        run: npm list
+        run: bun list
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install dependencies with bun
+        run: bun install
 
-      - name: Build website
-        run: npm run build
+      - name: Build website with bun
+        run: bun run build
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           GITHUB_TOKEN: ${{ secrets.CD_GITHUB_TOKEN }}
           publish_dir: ./build
+
