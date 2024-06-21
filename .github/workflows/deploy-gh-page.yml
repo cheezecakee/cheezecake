@@ -28,7 +28,7 @@ jobs:
 
       - name: List the state of node modules
         continue-on-error: true
-        run: bun list
+        run: bun run list
 
       - name: Install dependencies with bun
         run: bun install
