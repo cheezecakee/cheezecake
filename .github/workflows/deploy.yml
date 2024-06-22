@@ -1,8 +1,11 @@
+
 name: CD
+
 on:
   push:
     branches:
       - "main"
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -33,6 +36,10 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Replace placeholder with secret
+        run: |
+          sed -i 's/REACT_APP_GITHUB_TOKEN_PLACEHOLDER/${{ secrets.CD_GITHUB_TOKEN }}/g' src/projects.js
+
       - name: Build website
         run: bun run build
 
@@ -40,6 +47,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.CD_GITHUB_TOKEN }}
+          publish_branch: gh-pages
           publish_dir: ./build
-
 
