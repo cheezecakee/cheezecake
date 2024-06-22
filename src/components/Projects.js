@@ -25,6 +25,7 @@ useEffect(() => {
       }
 
       console.log('Data:', data);
+      console.log('Token:', token);
 
       if (data.length > 0) {
         const reposWithLanguages = await Promise.all(data.map(async repo => {
