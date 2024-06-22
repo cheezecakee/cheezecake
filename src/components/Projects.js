@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 const Projects = () => {
   const [repos, setRepos] = useState([]);
   const username = 'cheezecakee'; 
-  const token = 'REACT_APP_GITHUB_TOKEN_PLACEHOLDER';
+  const token = 'API_KEY_PLACEHOLDER';
 
   useEffect(() => {
     const fetchRepos = async () => {
