@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from 'react';
+
 const Projects = () => {
   const [repos, setRepos] = useState([]);
   const username = 'cheezecakee';
