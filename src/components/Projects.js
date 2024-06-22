@@ -5,40 +5,48 @@ const Projects = () => {
   const username = 'cheezecakee';
   const token = process.env.REACT_APP_GITHUB_TOKEN;
 
-  useEffect(() => {
-    const fetchRepos = async () => {
-      try {
-        const response = await fetch(`https://api.github.com/users/${username}/repos`, {
-          headers: {
-            Authorization: `token ${token}`
-          }
-        });
 
-        const data = await response.json();
-        console.log('Data:', data);
-
-        if (Array.isArray(data)) {
-          const reposWithLanguages = await Promise.all(data.map(async repo => {
-            const langResponse = await fetch(repo.languages_url, {
-              headers: {
-                Authorization: `token ${token}`
-              }
-            });
-            const languages = await langResponse.json();
-            return { ...repo, languages };
-          }));
-
-          setRepos(reposWithLanguages);
-        } else {
-          console.error('Error: Expected data to be an array');
+useEffect(() => {
+  const fetchRepos = async () => {
+    try {
+      const response = await fetch(`https://api.github.com/users/${username}/repos`, {
+        headers: {
+          Authorization: `token ${token}`
         }
-      } catch (error) {
-        console.error('Error fetching repositories:', error);
-      }
-    };
+      });
 
-    fetchRepos();
-  }, [username, token]);
+      const data = await response.json();
+
+      // Check if the response is an array
+      if (!Array.isArray(data)) {
+        console.error('Unexpected response format:', data);
+        return;
+      }
+
+      console.log('Data:', data);
+
+      if (data.length > 0) {
+        const reposWithLanguages = await Promise.all(data.map(async repo => {
+          const langResponse = await fetch(repo.languages_url, {
+            headers: {
+              Authorization: `token ${token}`
+            }
+          });
+          const languages = await langResponse.json();
+          return {...repo, languages };
+        }));
+
+        setRepos(reposWithLanguages);
+      } else {
+        console.log('No repositories found.');
+      }
+    } catch (error) {
+      console.error('Error fetching repositories:', error);
+    }
+  };
+
+  fetchRepos();
+}, [username, token]);
 
   return (
     <div className="projects">
