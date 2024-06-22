@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 
 const Projects = () => {
@@ -61,4 +60,3 @@ const Projects = () => {
 };
 
 export default Projects;
-
