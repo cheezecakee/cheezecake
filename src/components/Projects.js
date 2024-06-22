@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
 
+import React, { useState, useEffect } from 'react';
 
 const Projects = () => {
   const [repos, setRepos] = useState([]);
-  const username = 'cheezecakee'; 
+  const username = 'cheezecakee';
   const token = process.env.REACT_APP_GITHUB_TOKEN;
 
   useEffect(() => {
@@ -17,13 +17,13 @@ const Projects = () => {
 
         const data = await response.json();
         console.log('Data:', data); 
-        
+
         const reposWithLanguages = await Promise.all(data.map(async repo => {
           const langResponse = await fetch(repo.languages_url, {
             headers: {
               Authorization: `token ${token}`
             }
-          });
+          }));
           const languages = await langResponse.json();
           return { ...repo, languages };
         }));
