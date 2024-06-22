@@ -38,7 +38,7 @@ jobs:
 
       - name: Replace placeholder with secret
         run: |
-          sed -i 's/REACT_APP_GITHUB_TOKEN_PLACEHOLDER/${{ secrets.CD_GITHUB_TOKEN }}/g' src/components/Projects.js
+          sed -i 's/REACT_APP_GITHUB_TOKEN_PLACEHOLDER/${{ secrets.API_GITHUB }}/g' src/components/Projects.js
 
       - name: Build website
         run: bun run build
