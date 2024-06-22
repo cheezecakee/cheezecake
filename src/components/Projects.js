@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
-
 const Projects = () => {
   const [repos, setRepos] = useState([]);
-  const username = 'cheezecakee'; 
+  const username = 'cheezecakee';
   const token = process.env.REACT_APP_GITHUB_TOKEN;
 
   useEffect(() => {
@@ -17,17 +15,21 @@ const Projects = () => {
         const data = await response.json();
         console.log('Data:', data);
 
-        const reposWithLanguages = await Promise.all(data.map(async repo => {
-          const langResponse = await fetch(repo.languages_url, {
-            headers: {
-              Authorization: `token ${token}`
-            }
-          });
-          const languages = await langResponse.json();
-          return { ...repo, languages };
-        }));
+        if (Array.isArray(data)) {
+          const reposWithLanguages = await Promise.all(data.map(async repo => {
+            const langResponse = await fetch(repo.languages_url, {
+              headers: {
+                Authorization: `token ${token}`
+              }
+            });
+            const languages = await langResponse.json();
+            return { ...repo, languages };
+          }));
 
-        setRepos(reposWithLanguages);
+          setRepos(reposWithLanguages);
+        } else {
+          console.error('Error: Expected data to be an array');
+        }
       } catch (error) {
         console.error('Error fetching repositories:', error);
       }

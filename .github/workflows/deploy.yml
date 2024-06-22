@@ -35,8 +35,9 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Create .env file
-        run: echo "REACT_APP_GITHUB_TOKEN=${{ secrets.API_GITHUB }}" > .env
+      - name: Replace placeholder with secret
+        run: |
+          sed -i 's/API_KEY_PLACEHOLDER/${{ secrets.API_GITHUB }}/g' src/components/Projects.js
 
       - name: Build website
         run: bun run build
@@ -47,5 +48,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./build
+
 
 
