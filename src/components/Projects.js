@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 const Projects = () => {
   const [repos, setRepos] = useState([]);
-  const username = 'cheezecakee'; 
-  const token = process.env.REACT_APP_APIKey;
+  const username = 'cheezecakee';
+  const token = process.env.REACT_APP_API_KEY; // Ensure the environment variable name matches exactly
 
   useEffect(() => {
     const fetchRepos = async () => {
@@ -11,12 +11,12 @@ const Projects = () => {
         const response = await fetch(`https://api.github.com/users/${username}/repos`, {
           headers: {
             Accept: 'application/vnd.github+json',
-            Authorization: `token ${token}`
+            Authorization: `Bearer ${token}` // Use Bearer keyword
           }
         });
 
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`HTTP error status: ${response.status}`);
         }
 
         const data = await response.json();
@@ -28,16 +28,16 @@ const Projects = () => {
         const reposWithLanguages = await Promise.all(data.map(async repo => {
           const langResponse = await fetch(repo.languages_url, {
             headers: {
-              Authorization: `token ${token}`
+              Authorization: `Bearer ${token}` // Use Bearer keyword
             }
           });
 
           if (!langResponse.ok) {
-            throw new Error(`HTTP error! status: ${langResponse.status}`);
+            throw new Error(`HTTP error status: ${langResponse.status}`);
           }
 
           const languages = await langResponse.json();
-          return { ...repo, languages };
+          return {...repo, languages };
         }));
 
         setRepos(reposWithLanguages);
@@ -48,6 +48,16 @@ const Projects = () => {
 
     fetchRepos();
   }, [username, token]);
+
+  return (
+    <div>
+      {/* Render your repos here */}
+    </div>
+  );
+};
+
+export default Projects;
+
 
   return (
     <div className="projects">
