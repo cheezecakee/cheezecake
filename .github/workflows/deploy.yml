@@ -8,7 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-
     permissions:
       contents: read
       pages: write
@@ -17,6 +16,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
@@ -34,9 +35,7 @@ jobs:
         run: bun run build
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
-          name: github-pages
-          path: ./build
+        uses: actions/upload-pages-artifact@v3
 
   deploy:
     environment: 
