@@ -1,5 +1,0 @@
-[bun]
-port = 3000
-
-[[server]]
-root = "."
