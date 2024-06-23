@@ -9,21 +9,11 @@ jobs:
       contents: read
       pages: write
       id-token: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Cache modules
-        id: cache-npm
-        uses: actions/cache@v3
-        with:
-          path: ~/.bun
-          key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
@@ -35,16 +25,11 @@ jobs:
           BUN_AUTH_TOKEN: ${{ secrets.REACT_APP_APIKEY }}
         run: bun install --frozen-lockfile
 
-
-      - name: Build website
+      - name: Build
         run: bun run build
 
-      - name: Upload artifact
-        # Automatically uploads an artifact from the './_site' directory by default
-        uses: actions/upload-pages-artifact@v3
-
       - name: Deploy to gh-pages
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v4        
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
