@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pages: write
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -25,9 +24,14 @@ jobs:
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
 
       - name: Install dependencies
-        run: bun install
+        env:
+          BUN_AUTH_TOKEN: ${{ secrets.REACT_APP_APIKEY }}
+        run: bun install --frozen-lockfile
+
 
       - name: Build website
         run: bun run build

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const Projects = () => {
   const [repos, setRepos] = useState([]);
   const username = 'cheezecakee';
-  const token = process.env.REACT_APP_API_KEY; // Ensure the environment variable name matches exactly
+  const token = process.env.REACT_APP_APIKEY;
 
   useEffect(() => {
     const fetchRepos = async () => {
@@ -11,7 +11,7 @@ const Projects = () => {
         const response = await fetch(`https://api.github.com/users/${username}/repos`, {
           headers: {
             Accept: 'application/vnd.github+json',
-            Authorization: `Bearer ${token}` // Use Bearer keyword
+            Authorization: `token ${token}`
           }
         });
 
@@ -28,12 +28,12 @@ const Projects = () => {
         const reposWithLanguages = await Promise.all(data.map(async repo => {
           const langResponse = await fetch(repo.languages_url, {
             headers: {
-              Authorization: `Bearer ${token}` // Use Bearer keyword
+              Authorization: `token ${token}`
             }
           });
 
           if (!langResponse.ok) {
-            throw new Error(`HTTP error status: ${langResponse.status}`);
+            throw new Error(`HTTP error! status: ${langResponse.status}`);
           }
 
           const languages = await langResponse.json();
@@ -73,5 +73,3 @@ const Projects = () => {
 };
 
 export default Projects;
-
-
