@@ -37,7 +37,9 @@ jobs:
         run: bun install
 
       - name: Build website
-        run: bun run build
+        run: |
+            echo "REACT_APP_APIKey: ${{ secrets.REACT_APP_APIKey }}"
+            bun run build
         env:
           REACT_APP_APIKey: ${{ secrets.REACT_APP_APIKey }}
 
