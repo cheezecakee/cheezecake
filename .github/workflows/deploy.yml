@@ -20,14 +20,10 @@ jobs:
           bun-version: latest
 
       - name: Install dependencies
-        env:
-          REACT_APP_APIKEY: ${{ secrets.REACT_APP_APIKEY }}
         run: bun install
 
 
       - name: Build website
-        env:
-          REACT_APP_APIKEY: ${{ secrets.REACT_APP_APIKEY }}
         run: bun run build
 
       - name: Deploy to gh-pages
