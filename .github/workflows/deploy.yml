@@ -1,16 +1,20 @@
 name: CD
 on:
   push:
-    branches: ["main"]
+    branches: 
+      - "main"
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
       pages: write
       id-token: write
+
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,14 +26,16 @@ jobs:
 
       - name: Install dependencies
         env:
-          BUN_AUTH_TOKEN: ${{ secrets.REACT_APP_APIKEY }}
-        run: bun install --frozen-lockfile
+          REACT_APP_APIKEY: ${{ secrets.REACT_APP_APIKEY }}
+        run: bun install
 
       - name: Build
+        env:
+          REACT_APP_APIKEY: ${{ secrets.REACT_APP_APIKEY }}
         run: bun run build
 
       - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v4        
+        uses: actions/deploy-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
