@@ -34,6 +34,12 @@ jobs:
           REACT_APP_APIKEY: ${{ secrets.REACT_APP_APIKEY }}
         run: bun run build
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: ./build
+
       - name: Deploy to gh-pages
         uses: actions/deploy-pages@v4
         with:
