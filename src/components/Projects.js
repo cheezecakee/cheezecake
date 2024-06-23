@@ -5,50 +5,49 @@ const Projects = () => {
   const username = 'cheezecakee'; 
   const token = process.env.REACT_APP_APIKey;
 
+  useEffect(() => {
+    const fetchRepos = async () => {
+      try {
+        const response = await fetch(`https://api.github.com/users/${username}/repos`, {
+          headers: {
+            Accept: 'application/vnd.github.v3+json',
+            Authorization: `token ${token}`
+          }
+        });
 
-useEffect(() => {
-  const fetchRepos = async () => {
-    try {
-      const response = await fetch(`https://api.github.com/users/${username}/repos`, {
-        headers: {
-          Accept: 'application/vnd.github.v3+json',
-          Authorization: `token ${token}`
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
-      });
 
-      const data = await response.json();
+        const data = await response.json();
 
-      // Check if the response is an array
-      if (!Array.isArray(data)) {
-        console.error('Unexpected response format:', data);
-        return;
-      }
+        if (!Array.isArray(data)) {
+          throw new Error('Unexpected response format');
+        }
 
-      console.log('Data:', data);
-      console.log('Token:', token);
-
-      if (data.length > 0) {
         const reposWithLanguages = await Promise.all(data.map(async repo => {
           const langResponse = await fetch(repo.languages_url, {
             headers: {
               Authorization: `token ${token}`
             }
           });
+
+          if (!langResponse.ok) {
+            throw new Error(`HTTP error! status: ${langResponse.status}`);
+          }
+
           const languages = await langResponse.json();
-          return {...repo, languages };
+          return { ...repo, languages };
         }));
 
         setRepos(reposWithLanguages);
-      } else {
-        console.log('No repositories found.');
+      } catch (error) {
+        console.error('Error fetching repositories:', error);
       }
-    } catch (error) {
-      console.error('Error fetching repositories:', error);
-    }
-  };
+    };
 
-  fetchRepos();
-}, [username, token]);
+    fetchRepos();
+  }, [username, token]);
 
   return (
     <div className="projects">
@@ -74,4 +73,5 @@ useEffect(() => {
 };
 
 export default Projects;
+
 
