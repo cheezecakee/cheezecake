@@ -5,8 +5,6 @@ on:
       - "main"
 jobs:
   deploy:
-   environment:
-      name: github-pages
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -22,16 +20,22 @@ jobs:
           bun-version: latest
 
       - name: Install dependencies
+        env:
+          REACT_APP_APIKEY: ${{ secrets.REACT_APP_APIKEY }}
         run: bun install
 
 
       - name: Build website
+        env:
+          REACT_APP_APIKEY: ${{ secrets.REACT_APP_APIKEY }}
         run: bun run build
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          personal_token: ${{ secrets.REACT_APP_APIKEY }}
+          environment:
+              name: github-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./build
 
