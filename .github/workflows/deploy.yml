@@ -1,8 +1,11 @@
 name: CD
 on:
   push:
-    branches:
-      - "main"
+    branches: ["main"]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -10,7 +13,9 @@ jobs:
       contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
       - name: Cache modules
         id: cache-npm
@@ -37,7 +42,7 @@ jobs:
         run: bun run build
 
       - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: actions/deploy-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
