@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const Projects = () => {
   const [repos, setRepos] = useState([]);
   const username = 'cheezecakee';
-  const token = process.env.REACT_APP_APIKEY;
+  const token = process.env.GITHUB_TOKEN;
 
   useEffect(() => {
     const fetchRepos = async () => {
