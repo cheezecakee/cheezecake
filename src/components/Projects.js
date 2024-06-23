@@ -50,16 +50,6 @@ const Projects = () => {
   }, [username, token]);
 
   return (
-    <div>
-      {/* Render your repos here */}
-    </div>
-  );
-};
-
-export default Projects;
-
-
-  return (
     <div className="projects">
       <h2>Projects</h2>
       <div className="repo-list">
