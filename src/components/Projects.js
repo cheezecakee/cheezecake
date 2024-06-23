@@ -12,7 +12,7 @@ const Projects = () => {
           headers: {
             Accept: 'application/vnd.github+json',
             Authorization: `token ${token}`
-          }
+          },
         });
 
         if (!response.ok) {
