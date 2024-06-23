@@ -39,6 +39,10 @@ jobs:
       - name: Build website
         run: bun run build
 
+      - name: Upload artifact
+        # Automatically uploads an artifact from the './_site' directory by default
+        uses: actions/upload-pages-artifact@v3
+
       - name: Deploy to gh-pages
         uses: actions/deploy-pages@v4
         with:
