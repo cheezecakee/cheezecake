@@ -32,11 +32,6 @@ jobs:
 
       - name: Build website
         run: bun run build
-        env:
-          REACT_APP_APIKey: ${{ secrets.REACT_APP_APIKey }}
-
-      - name: Print Environment Variables
-        run: printenv
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
