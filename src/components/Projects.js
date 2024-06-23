@@ -10,8 +10,8 @@ const Projects = () => {
       try {
         const response = await fetch(`https://api.github.com/users/${username}/repos`, {
           headers: {
-            Accept: 'application/vnd.github+json',
-            Authorization: `token ${token}`
+            "Accept": 'application/vnd.github+json',
+            "Authorization": `Bearer ${token}`
           },
         });
 
@@ -28,7 +28,7 @@ const Projects = () => {
         const reposWithLanguages = await Promise.all(data.map(async repo => {
           const langResponse = await fetch(repo.languages_url, {
             headers: {
-              Authorization: `token ${token}`
+              "Authorization": `Bearer ${token}`
             }
           });
 
