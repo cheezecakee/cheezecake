@@ -9,10 +9,11 @@ permissions:
   id-token: write
 
 jobs:
-  deploy: 
+  create_issue:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
-
       - name: Create issue using REST API
         run: |
           curl --request POST \
@@ -24,6 +25,10 @@ jobs:
             "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}**. \n\n The commit hash was: _${{ github.sha }}_."
             }' \
           --fail
+
+  deploy: 
+    runs-on: ubuntu-latest
+    steps:
 
       - name: Checkout
         uses: actions/checkout@v4
