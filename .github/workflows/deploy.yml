@@ -1,10 +1,16 @@
 name: CD
 on:
   push:
-    branches: ["main"]
-    
+    branches: 
+      - "main"
+
 jobs:
   deploy: 
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
     runs-on: ubuntu-latest
     steps:
 
@@ -24,8 +30,9 @@ jobs:
 
       - name: Deploy with gh-pages
         run: |
-          git remote set-url origin https://git:${REACT_APP_REPO}@github.com/${GITHUB_REPOSITORY}.git
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
         env:
           REACT_APP_REPO: ${{ secrets.REACT_APP_REPO }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
