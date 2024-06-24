@@ -22,6 +22,8 @@ jobs:
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./github-pages     
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
