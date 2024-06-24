@@ -27,6 +27,13 @@ jobs:
       - name: Build website
         run: bun run build
 
+      - name: Verify GitHub API access
+        run: |
+          curl -v --request GET \
+          --url https://api.github.com/users/cheezecakee/repos \
+          --header "Authorization: Bearer ${{ secrets.REACT_APP_APIKEY }}" \
+          --header "Content-Type: application/json"
+
       - name: Deploy with gh-pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
