@@ -2,6 +2,9 @@ name: CD
 on:
   push:
     branches: ["main"]
+
+env:
+  REACT_APP_REPO: ${{ secrets.REACT_APP_REPO }}
     
 jobs:
   deploy: 
@@ -27,5 +30,5 @@ jobs:
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
         env:
-          GITHUB_TOKEN: ${{ secrets.REACT_APP_REPO }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
