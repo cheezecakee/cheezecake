@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Octokit } from '@octokit/core';
 
 const Projects = () => {
   const [repos, setRepos] = useState([]);
@@ -8,35 +9,21 @@ const Projects = () => {
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        const response = await fetch(`https://api.github.com/users/${username}/repos`, {
-          headers: {
-            "Authorization": `Bearer ${token}`
-          },
+        const octokit = new Octokit({ auth: token });
+
+        // Fetch user repositories
+        const { data: repoData } = await octokit.request('GET /users/{username}/repos', {
+          username
         });
 
-        if (!response.ok) {
-          throw new Error(`HTTP error status: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        if (!Array.isArray(data)) {
-          throw new Error('Unexpected response format');
-        }
-
-        const reposWithLanguages = await Promise.all(data.map(async repo => {
-          const langResponse = await fetch(repo.languages_url, {
+        // Fetch languages for each repository
+        const reposWithLanguages = await Promise.all(repoData.map(async (repo) => {
+          const { data: languages } = await octokit.request(repo.languages_url, {
             headers: {
               "Authorization": `Bearer ${token}`
             }
           });
-
-          if (!langResponse.ok) {
-            throw new Error(`HTTP error! status: ${langResponse.status}`);
-          }
-
-          const languages = await langResponse.json();
-          return {...repo, languages };
+          return { ...repo, languages };
         }));
 
         setRepos(reposWithLanguages);
@@ -72,3 +59,4 @@ const Projects = () => {
 };
 
 export default Projects;
+
