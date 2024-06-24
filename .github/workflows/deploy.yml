@@ -26,6 +26,8 @@ jobs:
         run: bun install
 
       - name: Build website
+        with:
+          REACT_APP_REPO: ${{ secrets.REACT_APP_REPO }}
         run: bun run build
 
       - name: Deploy with gh-pages
@@ -33,6 +35,5 @@ jobs:
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
         env:
-          REACT_APP_REPO: ${{ secrets.REACT_APP_REPO }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
