@@ -10,7 +10,6 @@ const Projects = () => {
       try {
         const response = await fetch(`https://api.github.com/users/${username}/repos`, {
           headers: {
-            "Accept": 'application/vnd.github+json',
             "Authorization": `Bearer ${token}`
           },
         });
