@@ -11,14 +11,12 @@ permissions:
 jobs:
   create_issue:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
     steps:
       - name: Create issue using REST API
         run: |
           curl --request POST \
-          --url https://api.github.com/repos/${{ github.repository }}/issues \
-          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --url https://api.github.com/repos/${{ github.repository }}/repos \
+          --header 'authorization: Bearer ${{ secrets.REACT_APP_APIKEY }}' \
           --header 'content-type: application/json' \
           --data '{
             "title": "Automated issue for commit: ${{ github.sha }}",
