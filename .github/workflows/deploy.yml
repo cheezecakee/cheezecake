@@ -27,11 +27,6 @@ jobs:
       - name: Build website
         run: bun run build
 
-      - name: Test GitHub API with GitHub CLI
-        run: |
-          echo ${{ secrets.REACT_APP_APIKEY }} | gh auth login --with-token
-          gh repo list cheezecakee --json name --jq '.[].name'
-
       - name: Deploy with gh-pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
