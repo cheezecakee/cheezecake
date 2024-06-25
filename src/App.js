@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
 import Home from './components/Home.js';
-import ThemeSelection from './components/ThemeSelection.js';
 import CursorSelection from './components/CursorSelection.js';
 import NavBar from './components/NavBar.js';
 import About from './components/About.js';
@@ -9,6 +8,8 @@ import Projects from './components/Projects.js';
 import Games from './components/Games.js';
 import Settings from './components/Settings.js';
 
+import { ReactComponent as SunIcon } from './images/sun.svg';
+import { ReactComponent as MoonIcon } from './images/moon.svg';
 
 const App = () => {
   const [theme, setTheme] = useState('light');
@@ -22,9 +23,8 @@ const App = () => {
     setPage('home');
   };
 
-  const handleThemeSelect = (theme) => {
-    setTheme(theme);
-    setPage('cursor');
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
   const renderPage = () => {
@@ -46,13 +46,16 @@ const App = () => {
 
   return (
     <div className={`app ${theme}`} style={{ cursor: cursor ? `url(${cursor}), auto` : 'inherit' }}>
-      {page === 'start' && <button onClick={() => setPage('theme')}>Press to Start</button>}
-      {page === 'theme' && <ThemeSelection onThemeSelect={handleThemeSelect} />}
+      {page === 'start' && <button onClick={() => setPage('cursor')}>Press to Start</button>}
       {page === 'cursor' && <CursorSelection onCursorSelect={handleCursorSelect} />}
       {showNavBar && <NavBar onSelectPage={setPage} />}
       {showNavBar && renderPage()}
+      <button className="dark-mode-toggle" onClick={toggleTheme}>
+        {theme === 'light' ? <MoonIcon className="dark-mode-icon" /> : <SunIcon className="dark-mode-icon" />}
+      </button>
     </div>
   );
 };
 
 export default App;
+

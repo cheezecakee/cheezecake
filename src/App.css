@@ -95,9 +95,33 @@ body, html, #root {
   flex-direction: column;
 }
 
+/** Dark mode toggle button **/
+.dark-mode-toggle {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dark-mode-icon {
+  width: 2em;
+  height: 2em;
+  fill: var(--text-color);
+}
+
+.dark-mode-toggle:hover {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
 /** Default Buttons **/
 button {
   border: solid 0.0625em var(--text-color);
+  color: var(--text-color);
+  background: var(--bg-color);
   padding: 0.625em 1.25em;
   font-size: 1em;
   font-family: 'KodeMono', sans-serif;
@@ -109,7 +133,7 @@ button:hover {
 }
 
 /** Theme and cursor selection **/
-.cursor-selection, .theme-selection{
+.cursor-selection{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -120,7 +144,7 @@ button:hover {
   padding-bottom: 3.75em; 
 }
 
-.theme-selection .buttons-container, .cursor-selection .cursor-options-container {
+.cursor-selection .cursor-options-container {
   display: flex;
   flex-direction: row;
   justify-content: center;

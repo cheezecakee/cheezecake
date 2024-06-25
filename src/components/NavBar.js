@@ -1,15 +1,14 @@
 import React from 'react';
 import './NavBar.css';
-
 import { ReactComponent as HomeIcon } from '../images/home.svg';
 import { ReactComponent as AboutIcon } from '../images/about.svg';
 import { ReactComponent as ProjectsIcon } from '../images/projects.svg';
 import { ReactComponent as GamesIcon } from '../images/games.svg';
 import { ReactComponent as SettingsIcon } from '../images/settings.svg';
 
-const NavBar = ({ onSelectPage }) =>{
+const NavBar = ({ onSelectPage, darkMode, toggleDarkMode }) => {
   return (
-   <div className="nav-bar">
+    <div className="nav-bar">
       <button onClick={() => onSelectPage('home')} data-text="Home">
         <HomeIcon className="nav-icon" />
       </button>
