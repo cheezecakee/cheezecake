@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Settings = () => (
-  <section>
+  <section className="settings">
     <h2>Settings</h2>
     <p>Coming Soon</p>
   </section>

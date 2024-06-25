@@ -6,7 +6,7 @@ import CursorSelection from './components/CursorSelection.js';
 import NavBar from './components/NavBar.js';
 import About from './components/About.js';
 import Projects from './components/Projects.js';
-import Contact from './components/Contact.js';
+import Games from './components/Games.js';
 import Settings from './components/Settings.js';
 
 
@@ -35,8 +35,8 @@ const App = () => {
         return <About />;
       case 'projects':
         return <Projects />;
-      case 'contact':
-        return <Contact />;
+      case 'games':
+        return <Games />;
       case 'settings':
         return <Settings />;
       default:

@@ -108,7 +108,7 @@ button:hover {
   box-shadow: 0 0 0 0.125em var(--text-color); 
 }
 
-/** Theme and cursor selectio **/
+/** Theme and cursor selection **/
 .cursor-selection, .theme-selection{
   display: flex;
   flex-direction: column;
@@ -137,7 +137,7 @@ button:hover {
 
 /** Home Page **/
 
-.home {
+.home, .games, .settings {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -179,30 +179,22 @@ button:hover {
   box-shadow: 0 0 0 0.125em var(--text-color); 
 }
 
-/* Skills */
-.skills {
-  width: 100%; 
+.links {
+  margin-bottom: 5%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.social-link {
+  text-decoration: none;
   color: var(--text-color);
-  text-align: left;
-  padding: 1.25em;
-  margin-bottom: 2%;
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, auto);
-  gap: 0.625em;
-  list-style: none;
-  padding: 0;
-}
-
-.skills-grid li {
   background-color: var(--bg-color);
-  padding: 0.625em;
-  border: 0.0625em solid var(--text-color);
-  text-align: center;
+  font-size: 1.5em;
+  margin-top: 0.625em;
 }
+
 
 /** About **/
 .about {
@@ -220,6 +212,61 @@ button:hover {
   display: none; /* Hide scrollbar */
 }
 
+/* Skills */
+.skills {
+  width: 100%; 
+  color: var(--text-color);
+  text-align: left;
+  padding: 1.25em;
+  margin-bottom: 10%;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 0.625em;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 10%;
+}
+
+.skills-grid li {
+  background-color: var(--bg-color);
+  padding: 0.625em;
+  border: 0.0625em solid var(--text-color);
+  text-align: center;
+}
+
+.skills-h2 {
+  color: #ff6666;
+}
+
+.about-me .social-link {
+  font-size: 1em;
+  display: inline-flex;
+  align-items: center;
+  background-color: #ff6666;
+  color: white;
+  padding: 0.2em 0.2em;
+  text-decoration: none;
+  border-radius: 0.3125em;
+  transition: background-color 0.3s;
+  margin-left: 1%;
+}
+
+.about-me .social-link:hover {
+  background-color: #ff6666; 
+  color: black;
+}
+
+.social-icon {
+  margin-right: 3%;
+  width: 1.2em;
+  height: 1.2em;
+  fill: var(--text-color);
+}
+
 /** Projects **/
 .projects {
   width: 40%;
@@ -229,7 +276,6 @@ button:hover {
   justify-content: start;
   align-items: start;
   text-align: start;
-
 }
 
 .repo-list {
@@ -245,7 +291,7 @@ button:hover {
   border: 0.0625em solid var(--text-color);
   border-radius: 0.5em;
   padding: 0.9375em;
-  width: 100%; /* Adjust to fit 3 boxes per row */
+  width: 100%;
   box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
@@ -287,6 +333,10 @@ button:hover {
   background-color: var(--bg-color);
   font-size: 0.9em;
   margin-top: 0.625em;
+}
+
+.repo-link:hover, .social-link:hover {
+  color: #ff6666;
 }
 
 /** Typing Animation **/

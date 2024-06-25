@@ -8,22 +8,9 @@ const Home = () => {
         <h1 className="typing-animation">Hello, I am Anabel</h1>
         <p className="intro-text"> Backend Developer. </p>
         <p className="intro-text"> If you would like to know more about me feel free to browse!</p>
-        <a href={resumePDF} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</a>
-      </div>
-      <div className="Skills">
-        <h2>Skills</h2>
-        <div className="skills-grid">
-          <div className="skill-item">CSS</div>
-          <div className="skill-item">HTML</div>
-          <div className="skill-item">Golang</div>
-          <div className="skill-item">Python</div>
-          <div className="skill-item">Javascript</div>
-          <div className="skill-item">React</div>
-          <div className="skill-item">C</div>
-          <div className="skill-item">SQL</div>
-          <div className="skill-item">Docker</div>
-          <div className="skill-item">Git</div>
-          <div className="skill-item">Illustrator</div>
+        <div className="links">
+          <a href={resumePDF} className="social-link" target="_blank" rel="noopener noreferrer">[CV]</a>
+          <a href="https://github.com/cheezecakee" className="social-link" target="_blank" rel="noopener noreferrer">[Github]</a>
         </div>
       </div>
     </div>

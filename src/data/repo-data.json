@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "name": "Sample Project 1",
+    "description": "This is a sample project description.",
+    "languages": {
+      "JavaScript": 100
+    },
+    "html_url": "https://github.com/sample-user/sample-project1"
+  },
+  {
+    "id": 2,
+    "name": "Sample Project 2",
+    "description": "Another sample project description.",
+    "languages": {
+      "Python": 80,
+      "HTML": 20
+    },
+    "html_url": "https://github.com/sample-user/sample-project2"
+  }
+]

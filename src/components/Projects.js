@@ -29,7 +29,7 @@ const Projects = () => {
 
   return (
     <div className="projects">
-      <h2>Projects</h2>
+      <h2>[Projects]</h2>
       <div className="repo-list">
         {repos.map(repo => (
           <div key={repo.id} className="repo-box">
