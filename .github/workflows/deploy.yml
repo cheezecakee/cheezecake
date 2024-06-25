@@ -7,9 +7,6 @@ on:
 jobs:
   fetch-data:
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,6 +24,9 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     needs: fetch-data
     steps:
       - name: Checkout
