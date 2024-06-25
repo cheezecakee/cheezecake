@@ -1,28 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { getRepoData } from '../data/dataLoader.js';
-import repoData from '../data/repo-data.json';
 
 const Projects = () => {
   const [repos, setRepos] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchRepos = async () => {
+    const fetchData = () => {
       try {
         const data = getRepoData();
-
-        // Check if the data is an array
         if (Array.isArray(data)) {
           setRepos(data);
         } else {
-          console.error('Fetched data is not an array:', data);
+          throw new Error('Fetched data is not an array');
         }
-      } catch (error) {
-        console.error('Error fetching repositories:', error);
+      } catch (err) {
+        setError(err.message);
+        console.error('Error loading repository data:', err);
       }
     };
 
-    fetchRepos();
+    fetchData();
   }, []);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="projects">
@@ -34,7 +37,7 @@ const Projects = () => {
             <p>{repo.description}</p>
             <div className="repo-footer">
               <div className="languages">
-                {Object.keys(repo.languages).map(lang => (
+                {Object.keys(repo.languages || {}).map(lang => (
                   <span key={lang}>{lang}</span>
                 ))}
               </div>
