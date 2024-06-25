@@ -13,9 +13,9 @@ jobs:
 
       - name: Fetch repository data
         env:
-          REACT_APP_APIKEY: ${{ secrets.REACT_APP_APIKEY }}
+          REACT_APP_APIKEY: ${{ secrets.REACT_APP_REPO }}
         run: |
-          curl -H "Authorization: Bearer ${{ secrets.REACT_APP_APIKEY }}" \
+          curl -H "Authorization: Bearer ${{ secrets.REACT_APP_REPO }}" \
           https://api.github.com/users/cheezecakee/repos > repo-data.json
 
       - name: Display fetched data
