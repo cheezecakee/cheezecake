@@ -12,6 +12,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Fetch repository data
+        env:
+          REACT_APP_APIKEY: ${{ secrets.REACT_APP_APIKEY }}
         run: |
           curl -H "Authorization: Bearer ${{ secrets.REACT_APP_APIKEY }}" \
           https://api.github.com/users/cheezecakee/repos > repo-data.json
