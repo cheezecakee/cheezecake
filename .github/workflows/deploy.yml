@@ -16,11 +16,14 @@ jobs:
           curl -H "Authorization: Bearer ${{ secrets.REACT_APP_APIKEY }}" \
           https://api.github.com/users/cheezecakee/repos > repo-data.json
 
+      - name: Display fetched data
+        run: cat repo-data.json
+
       - name: Save data as artifact
         uses: actions/upload-artifact@v3
         with:
           name: repo-data
-          path: ./src/data/repo-data.json
+          path: repo-data.json
 
   deploy:
     runs-on: ubuntu-latest
@@ -44,6 +47,9 @@ jobs:
           name: repo-data
           path: ./src/data
 
+      - name: Display downloaded data
+        run: cat ./src/data/repo-data.json
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
         with:
@@ -65,4 +71,5 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
 
