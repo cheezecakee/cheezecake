@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getRepoData } from '../dataLoader';
+import { getRepoData } from '../data/dataLoader';
 
 const Projects = () => {
   const [repos, setRepos] = useState([]);
@@ -8,7 +8,13 @@ const Projects = () => {
     const fetchRepos = async () => {
       try {
         const data = getRepoData();
-        setRepos(data);
+
+        // Check if the data is an array
+        if (Array.isArray(data)) {
+          setRepos(data);
+        } else {
+          console.error('Fetched data is not an array:', data);
+        }
       } catch (error) {
         console.error('Error fetching repositories:', error);
       }
@@ -41,4 +47,5 @@ const Projects = () => {
 };
 
 export default Projects;
+
 
