@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getRepoData } from '../data/dataLoader.js';
+import repoData from '../data/repo-data.json';
 
 const Projects = () => {
   const [repos, setRepos] = useState([]);
