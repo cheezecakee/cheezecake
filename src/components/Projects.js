@@ -1,39 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Octokit } from '@octokit/core';
+import { getRepoData } from '../dataLoader';
 
 const Projects = () => {
   const [repos, setRepos] = useState([]);
-  const username = 'cheezecakee';
-  const token = process.env.REACT_APP_REPO;
 
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        const octokit = new Octokit({ auth: token });
-
-        // Fetch user repositories
-        const { data: repoData } = await octokit.request('GET /users/{username}/repos', {
-          username
-        });
-
-        // Fetch languages for each repository
-        const reposWithLanguages = await Promise.all(repoData.map(async (repo) => {
-          const { data: languages } = await octokit.request(repo.languages_url, {
-            headers: {
-              "Authorization": `Bearer ${token}`
-            }
-          });
-          return { ...repo, languages };
-        }));
-
-        setRepos(reposWithLanguages);
+        const data = getRepoData();
+        setRepos(data);
       } catch (error) {
         console.error('Error fetching repositories:', error);
       }
     };
 
     fetchRepos();
-  }, [username, token]);
+  }, []);
 
   return (
     <div className="projects">
