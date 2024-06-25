@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getRepoData } from '../data/dataLoader';
+import { getRepoData } from '../data/dataLoader.js';
 
 const Projects = () => {
   const [repos, setRepos] = useState([]);
@@ -47,5 +47,4 @@ const Projects = () => {
 };
 
 export default Projects;
-
 
