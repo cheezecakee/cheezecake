@@ -32,12 +32,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Remove existing repo-data.json if exists
+        run: rm -f ./src/data/repo-data.json
+
       - name: Download data artifact
         uses: actions/download-artifact@v3
         with:
           name: repo-data
-          path: ./src/data/repo-data.json
-          overwrite: true
+          path: ./src/data
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
