@@ -1,3 +1,4 @@
+
 name: CD
 on:
   push:
@@ -15,17 +16,31 @@ jobs:
         env:
           REACT_APP_APIKEY: ${{ secrets.REACT_APP_REPO }}
         run: |
-          curl -H "Authorization: Bearer ${{ secrets.REACT_APP_REPO }}" \
-          https://api.github.com/users/cheezecakee/repos > repo-data.json
+          repos=$(curl -H "Authorization: Bearer ${{ secrets.REACT_APP_REPO }}" https://api.github.com/users/cheezecakee/repos)
+          echo "$repos" > repo-data.json
+          
+          # Initialize an empty array to store updated repo data with languages
+          echo "[]" > src/data/repo-data.json
+
+          # Loop through each repo and fetch its languages
+          for repo in $(echo "$repos" | jq -c '.[]'); do
+            repo_name=$(echo $repo | jq -r '.name')
+            languages_url=$(echo $repo | jq -r '.languages_url')
+            languages=$(curl -H "Authorization: Bearer ${{ secrets.REACT_APP_REPO }}" $languages_url)
+            repo_with_languages=$(echo $repo | jq --argjson languages "$languages" '. + {languages: $languages}')
+            
+            # Append the updated repo data to repo-data.json
+            jq ". += [$repo_with_languages]" src/data/repo-data.json > src/data/tmp.json && mv src/data/tmp.json src/data/repo-data.json
+          done
 
       - name: Display fetched data
-        run: cat repo-data.json
+        run: cat src/data/repo-data.json
 
       - name: Save data as artifact
         uses: actions/upload-artifact@v3
         with:
           name: repo-data
-          path: repo-data.json
+          path: src/data/repo-data.json
 
   deploy:
     runs-on: ubuntu-latest
@@ -49,9 +64,6 @@ jobs:
           name: repo-data
           path: ./src/data
 
-      - name: Display downloaded data
-        run: cat ./src/data/repo-data.json
-
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
         with:
@@ -65,13 +77,7 @@ jobs:
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./build
+        with
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
 

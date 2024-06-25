@@ -29,7 +29,7 @@ const Projects = () => {
 
   return (
     <div className="projects">
-      <h2>[Projects]</h2>
+      <h2>Projects</h2>
       <div className="repo-list">
         {repos.map(repo => (
           <div key={repo.id} className="repo-box">
@@ -37,7 +37,7 @@ const Projects = () => {
             <p>{repo.description}</p>
             <div className="repo-footer">
               <div className="languages">
-                {Object.keys(repo.languages || {}).map(lang => (
+                {repo.languages && Object.keys(repo.languages).map(lang => (
                   <span key={lang}>{lang}</span>
                 ))}
               </div>
@@ -51,4 +51,5 @@ const Projects = () => {
 };
 
 export default Projects;
+
 
