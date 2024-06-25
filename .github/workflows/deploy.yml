@@ -20,7 +20,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: repo-data
-          path: repo-data.json
+          path: ./src/data/repo-data.json
 
   deploy:
     runs-on: ubuntu-latest
