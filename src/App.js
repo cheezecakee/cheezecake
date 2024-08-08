@@ -12,7 +12,7 @@ import { ReactComponent as SunIcon } from './images/sun.svg';
 import { ReactComponent as MoonIcon } from './images/moon.svg';
 
 const App = () => {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
   const [cursor, setCursor] = useState(null);
   const [page, setPage] = useState('start');
   const [showNavBar, setShowNavBar] = useState(false);
@@ -24,7 +24,7 @@ const App = () => {
   };
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
   };
 
   const renderPage = () => {

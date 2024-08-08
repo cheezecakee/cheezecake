@@ -11,6 +11,7 @@ const Home = () => {
         <div className="links">
           <a href={resumePDF} className="social-link" target="_blank" rel="noopener noreferrer">[CV]</a>
           <a href="https://github.com/cheezecakee" className="social-link" target="_blank" rel="noopener noreferrer">[Github]</a>
+          <a href="https://www.linkedin.com/in/anabel-p-moraes-00806a156/" className="social-link" target="_blank" rel="noopener noreferrer">[LinkedIn]</a>
         </div>
       </div>
     </div>
