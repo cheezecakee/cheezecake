@@ -1,0 +1,74 @@
+name: CD
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  fetch-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch repository data
+        run: |
+          repos=$(curl -H "Authorization: Bearer ${{ secrets.REACT_APP_REPO }}" https://api.github.com/users/cheezecakee/repos)
+          echo "$repos" > repo-data.json
+          
+          # Fetch languages for each repo and update the JSON
+          updated_repos=$(echo "$repos" | jq -c '.[]' | while read repo; do
+            languages_url=$(echo $repo | jq -r '.languages_url')
+            languages=$(curl -H "Authorization: Bearer ${{ secrets.REACT_APP_REPO }}" $languages_url)
+            echo $repo | jq --argjson languages "$languages" '. + {languages: $languages}'
+          done | jq -s '.')
+          echo "$updated_repos" > src/data/repo-data.json
+      - name: Save data as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: repo-data
+          path: ./src/data/repo-data.json
+          
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    needs: fetch-data
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Remove existing repo-data.json if exists
+        run: rm -f ./src/data/repo-data.json
+
+      - name: Download data artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: repo-data
+          path: ./src/data
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build website
+        run: bun run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./build
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
