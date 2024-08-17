@@ -1,41 +1,31 @@
 import React, { useState, useEffect } from 'react';
+import { getRepoData } from '../data/dataLoader.js';
 
 const Projects = () => {
   const [repos, setRepos] = useState([]);
-  const username = 'cheezecakee'; 
-  const token = process.env.REACT_APP_GITHUB_TOKEN;
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchRepos = async () => {
+    const fetchData = () => {
       try {
-        const response = await fetch(`https://api.github.com/users/${username}/repos`, {
-          headers: {
-            Authorization: `token ${token}`
-          }
-        });
-
-        const data = await response.json();
-        console.log('Data:', data); 
-        
-
-        const reposWithLanguages = await Promise.all(data.map(async repo => {
-          const langResponse = await fetch(repo.languages_url, {
-            headers: {
-              Authorization: `token ${token}`
-            }
-          });
-          const languages = await langResponse.json();
-          return { ...repo, languages };
-        }));
-
-        setRepos(reposWithLanguages);
-      } catch (error) {
-        console.error('Error fetching repositories:', error);
+        const data = getRepoData();
+        if (Array.isArray(data)) {
+          setRepos(data);
+        } else {
+          throw new Error('Fetched data is not an array');
+        }
+      } catch (err) {
+        setError(err.message);
+        console.error('Error loading repository data:', err);
       }
     };
 
-    fetchRepos();
-  }, [username, token]);
+    fetchData();
+  }, []);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="projects">
@@ -47,7 +37,7 @@ const Projects = () => {
             <p>{repo.description}</p>
             <div className="repo-footer">
               <div className="languages">
-                {Object.keys(repo.languages).map(lang => (
+                {repo.languages && Object.keys(repo.languages).map(lang => (
                   <span key={lang}>{lang}</span>
                 ))}
               </div>
@@ -61,3 +51,5 @@ const Projects = () => {
 };
 
 export default Projects;
+
+
