@@ -28,25 +28,25 @@ const Projects = () => {
   }
 
   return (
-    <div className="projects">
-      <h2>Projects</h2>
-      <div className="repo-list">
-        {repos.map(repo => (
-          <div key={repo.id} className="repo-box">
-            <h3>{repo.name}</h3>
-            <p>{repo.description}</p>
-            <div className="repo-footer">
-              <div className="languages">
-                {repo.languages && Object.keys(repo.languages).map(lang => (
-                  <span key={lang}>{lang}</span>
-                ))}
+      <div className="projects">
+        <h2>Projects</h2>
+        <div className="repo-list">
+          {repos.map(repo => (
+            <div key={repo.id} className="repo-box">
+              <h3>{repo.name}</h3>
+              <p>{repo.description}</p>
+              <div className="repo-footer">
+                <div className="languages">
+                  {repo.languages && Object.keys(repo.languages).map(lang => (
+                    <span key={lang}>{lang}</span>
+                  ))}
+                </div>
+                <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="repo-link">[GitHub]</a>
               </div>
-              <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="repo-link">[GitHub]</a>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
   );
 };
 

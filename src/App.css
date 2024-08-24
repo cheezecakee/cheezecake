@@ -239,7 +239,7 @@ button:hover {
 
 
 /** About **/
-.about {
+.about, .projects {
   overflow-y: auto;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
