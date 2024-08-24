@@ -97,7 +97,7 @@ body, html, #root {
 
 /** Hamburger buttone **/
 .hamburger-button {
-  position: absolute;
+  position: fixed;
   top: 1em;
   left: 1em;
   background: none;
@@ -115,7 +115,7 @@ body, html, #root {
 
 /** Dark mode toggle button **/
 .dark-mode-toggle {
-  position: absolute;
+  position: fixed;
   top: 1em;
   right: 1em;
   background: none;
