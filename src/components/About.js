@@ -42,6 +42,7 @@ I attended several different high schools due to frequent family relocations. I 
        <div className="skill-item">Docker</div>
        <div className="skill-item">Git</div>
        <div className="skill-item">Illustrator</div>
+       <div className="skill-item">FFmpeg</div>
      </div>
    </div>
 
