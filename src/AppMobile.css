@@ -1,0 +1,132 @@
+/* Mobile compatability */
+/* Responsive Media Query for Mobile Devices */
+@media (max-width: 768px) {
+  body, html, #root {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .app {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 2em; /* Reduced padding for mobile */
+  }
+
+  h1 {
+    margin-bottom: 10%;
+    margin-top: 10%;
+    text-align: left;
+  }
+
+  h2 {
+    margin-bottom: 5%;
+  }
+
+  section {
+    width: 90%; /* Wider content area for mobile */
+    height: 80%;
+  }
+
+  .cursor-selection, .home, .games, .settings {
+    padding-bottom: 2em; /* Adjusted padding for mobile */
+  }
+
+  .introduction, .skills-grid {
+    width: 85%; /* Full width for better readability */
+  }
+
+  .resume-button, .social-link, .repo-link {
+    font-size: 1em; /* Smaller font size for buttons and links */
+    padding: 0.5em 1em; /* Adjusted padding for smaller touch targets */
+  }
+
+  /** Projects **/
+  .projects {
+    width: 100%;
+    height: 80%;
+    padding: 1.25em;
+  }
+
+  .repo-list {
+    gap: 1.25em;
+  }
+
+  .repo-box {
+    padding: 0.9375em;
+    width: 100%;
+  }
+
+  .repo-box h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+  }
+
+  .languages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3125em;
+  }
+
+  .languages span {
+    border-radius: 0.25em;
+    padding: 0.1875em 0.375em;
+    font-size: 0.9em;
+    margin-top: 0.625em;
+  }
+
+  .repo-link {
+    font-size: 0.9em;
+    margin-top: 0.625em;
+  }
+
+
+  .typing-animation {
+    font-size: 1.5em; /* Adjust font size for typing animation */
+  }
+
+  .close-menu {
+    display: block;
+    cursor: pointer;
+  }
+
+  .cursor-selection {
+    display: none; /* Hide start and cursor selection on mobile */
+  }
+
+  .dark-mode-icon {
+    width: 3em;
+    height: 3em;
+  }
+
+}
+
+
+/* Small Mobile Devices (Portrait) */
+@media (max-width: 480px) {
+  /* Styles for small mobile devices */
+}
+
+/* Medium Mobile Devices */
+@media (max-width: 768px) {
+  /* Styles for medium mobile devices */
+}
+
+/* Large Mobile Devices and Tablets */
+@media (max-width: 1024px) {
+  /* Styles for large mobile devices and tablets */
+}
+
+/* Small Laptops */
+@media (max-width: 1280px) {
+  /* Styles for small laptops */
+}
+
+/* Desktop and Larger Screens */
+@media (min-width: 1281px) {
+  /* Styles for desktops and large screens */
+}
+{}

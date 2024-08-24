@@ -1,0 +1,28 @@
+.hamburger-menu {
+  position: absolute;
+  top: 5em;
+  left: 3em;
+  background: var(--bg-color);
+  border: 0.0625em solid var(--text-color);
+  box-shadow: 0 0.125em 0.625em rgba(0, 0, 0, 0.2);
+  border-radius: 0.25em;
+  padding: 1em;
+  width: 12.5em;
+  z-index: 1000;
+}
+.menu-item {
+  display: block;
+  padding: 0.5em;
+  border: none;
+  background: none;
+  color: var(--text-color);
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
+
+.menu-item:hover {
+  background: var(--hover-bg-color);
+}
+

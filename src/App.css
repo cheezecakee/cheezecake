@@ -95,6 +95,24 @@ body, html, #root {
   flex-direction: column;
 }
 
+/** Hamburger buttone **/
+.hamburger-button {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger-icon {
+  width: 3em;
+  height: 3em;
+  fill: var(--text-color);
+}
+
+
 /** Dark mode toggle button **/
 .dark-mode-toggle {
   position: absolute;
@@ -106,8 +124,8 @@ body, html, #root {
 }
 
 .dark-mode-icon {
-  width: 2em;
-  height: 2em;
+  width: 4em;
+  height: 4em;
   fill: var(--text-color);
 }
 
@@ -384,5 +402,4 @@ button:hover {
   from, to { border-color: transparent }
   50% { border-color: var(--text-color) }
 }
-
 
