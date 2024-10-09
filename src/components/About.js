@@ -22,11 +22,17 @@ I attended several different high schools due to frequent family relocations. I 
 
   <div className="Skills">
     <h2 className="skills-h2">[Languages]</h2>
+    <h3 className="skills-h2">[Programming]</h3>
     <div className="skills-grid">
       <div className="skill-item">Golang</div>
       <div className="skill-item">Python</div>
       <div className="skill-item">Javascript</div>
       <div className="skill-item">C</div>
+    </div>
+    <h4 className="skills-h2">[Spoken]</h4>
+    <div className="skills-grid">
+      <div className="skill-item">English</div>
+      <div className="skill-item">Portuguese</div>
     </div>
   </div>
 

@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/cheezecake/static/css/main.7d38a55e.css",
+    "main.js": "/cheezecake/static/js/main.2d8bdadf.js",
+    "static/media/KodeMono-VariableFont_wght.ttf": "/cheezecake/static/media/KodeMono-VariableFont_wght.9ae07349897c5fb8e035.ttf",
+    "static/media/resume.pdf": "/cheezecake/static/media/resume.4904d5699343f9c65ec6.pdf",
+    "static/media/discord.svg": "/cheezecake/static/media/discord.23dc6bea95ddc90e8c94b5a326f32db8.svg",
+    "static/media/sun.svg": "/cheezecake/static/media/sun.8b5e135a94ec059e7b09f740228d09cf.svg",
+    "static/media/settings.svg": "/cheezecake/static/media/settings.4f46b93969c652931a7721b19e66cdd0.svg",
+    "static/media/games.svg": "/cheezecake/static/media/games.64dfdd2dec910e845dc7b02f9dda2ed4.svg",
+    "static/media/moon.svg": "/cheezecake/static/media/moon.4ec4c6edf1cbb71b50edaf139ea3a8cb.svg",
+    "static/media/menu.svg": "/cheezecake/static/media/menu.c63f5eba09996cc6baddab79cb6f574b.svg",
+    "static/media/twitch.svg": "/cheezecake/static/media/twitch.6f322047fed813bd22470cfcd3f24e0c.svg",
+    "static/media/close.svg": "/cheezecake/static/media/close.8f8bcb97cf359d1c0cd178c70fe10bd6.svg",
+    "static/media/about.svg": "/cheezecake/static/media/about.f2b2d4b5091b7b0a24630a5d0e66348b.svg",
+    "index.html": "/cheezecake/index.html",
+    "static/media/home.svg": "/cheezecake/static/media/home.9f30cd4b21a37942900e5f66eeb32daf.svg",
+    "static/media/projects.svg": "/cheezecake/static/media/projects.bde2be0bba3021e0f08172bd3d2034f0.svg",
+    "main.7d38a55e.css.map": "/cheezecake/static/css/main.7d38a55e.css.map",
+    "main.2d8bdadf.js.map": "/cheezecake/static/js/main.2d8bdadf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7d38a55e.css",
+    "static/js/main.2d8bdadf.js"
+  ]
+}
